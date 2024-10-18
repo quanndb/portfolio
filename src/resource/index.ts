@@ -80,6 +80,11 @@ export const about = {
         icon: "dashicons:email",
         link: "mailto:quanvuminh28@gmail.com",
       },
+      {
+        name: "Linkedin",
+        icon: "mdi:linkedin",
+        link: "https://linkedin.com/in/quanndb",
+      },
     ],
   },
 };

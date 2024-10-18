@@ -50,7 +50,7 @@ export default function About() {
                     href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center text-base md:text-lg text-center border border-slate-300 dark:border-slate-700 rounded-md p-2 hover:bg-slate-300 hover:animate-pulse dark:hover:bg-slate-700"
+                    className="flex flex-col w-[100px] items-center text-base md:text-lg text-center border border-slate-300 dark:border-slate-700 rounded-md p-2 hover:bg-slate-300 hover:animate-pulse dark:hover:bg-slate-700"
                   >
                     {social.name}
                     <Icon
