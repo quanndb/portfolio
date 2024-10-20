@@ -1,12 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/moving-border";
+import { resume } from "@/resource";
 import React from "react";
 
 export default function ResumeButton() {
   const handleDowloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/files/resume.pdf"; // Replace with your file path
-    link.download = "resume.pdf"; // Specify the file name for download
+    link.href = resume.url;
+    link.download = resume.fileName;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

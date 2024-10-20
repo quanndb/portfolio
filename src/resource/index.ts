@@ -43,6 +43,11 @@ export type contactDataType = {
   description: string;
 };
 
+export const resume = {
+  fileName: "resume.pdf",
+  url: "https://drive.usercontent.google.com/u/0/uc?id=19PRTyXcDDWAstwCYu_vrnyFMjdAGHi_k&export=download",
+};
+
 export const homeData = {
   title: "Hi there!, I'm Quan",
   description: "I'm a Fullstack Web developer",
