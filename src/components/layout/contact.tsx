@@ -1,9 +1,7 @@
-import dynamic from "next/dynamic";
-import { contact, contactDataType } from "@/resource";
+"use client";
 import ContactForm from "@/components/ui/contact-form";
-const Grid = dynamic(() => import("@/components/ui/grid-pattern"), {
-  ssr: false,
-});
+import { contact, contactDataType } from "@/resource";
+import Grid from "../ui/grid-pattern";
 
 export default function Contact() {
   const contactData: contactDataType = contact;

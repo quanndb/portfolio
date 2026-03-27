@@ -1,14 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useEffect, useState } from "react";
+import { useFormStatus } from "react-dom";
 
-import { cn } from "@/lib/utils";
-import { contact } from "@/resource";
-import { useToast } from "@/hooks/use-toast";
-import { ToastAction } from "@/components/ui/toast";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { contactAction } from "@/actions/contact-action";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+import { contact } from "@/resource";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 const placeholders = contact.placeholders;
 
@@ -50,7 +50,7 @@ export function FormContent({ success }: { success: boolean }) {
           className={cn(
             `px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white font-bold hover:bg-transparent ${
               pending && "bg-transparent"
-            }`
+            }`,
           )}
         >
           {pending ? (
@@ -76,7 +76,7 @@ export default function ContactForm() {
     errors: {},
   });
 
-  const [state, formAction] = useFormState(contactAction, initialState);
+  const [state, formAction] = useActionState(contactAction, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -109,7 +109,7 @@ export default function ContactForm() {
           <p
             className={cn(
               "my-20 w-fit opacity-0 animate-fadeIn text-center text-white text-lg font-semibold",
-              "rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 p-5 shadow-lg shadow-emerald-300/100 dark:shadow-emerald-500/100"
+              "rounded-lg bg-gradient-to-r from-teal-500 to-cyan-500 p-5 shadow-lg shadow-emerald-300/100 dark:shadow-emerald-500/100",
             )}
           >
             🙏 Thank you for your message . I&apos;ll get back to you as soon as

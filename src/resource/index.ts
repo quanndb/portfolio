@@ -27,6 +27,7 @@ export type projectsDataType = {
   title: string;
   description: string;
   items: {
+    id: string;
     title: string;
     description: {
       url: string;
@@ -45,7 +46,8 @@ export type contactDataType = {
 
 export const resume = {
   fileName: "resume.pdf",
-  url: "https://drive.usercontent.google.com/u/0/uc?id=19PRTyXcDDWAstwCYu_vrnyFMjdAGHi_k&export=download",
+  url: "https://drive.google.com/file/d/19PRTyXcDDWAstwCYu_vrnyFMjdAGHi_k/preview",
+  downloadUrl: "https://drive.usercontent.google.com/u/0/uc?id=19PRTyXcDDWAstwCYu_vrnyFMjdAGHi_k&export=download",
 };
 
 export const homeData = {
@@ -62,16 +64,13 @@ export const about = {
     name: "Vu Minh Quan",
     role: "Fullstack Web developer",
     description: [
-      `Hello! I'm **Quan**, currently studying Information Technology at the **Ha Noi University of Industry**.`,
-      `I'm passionate about exploring new technologies and continuously learning to improve my skills in 
-      programming and software development.`,
-      `I particularly enjoy working with web technologies, from user interfaces to complex backend systems. 
-      My personal projects often revolve around finding optimal, convenient, and creative solutions to help users. 
-      For me, every line of code is not just a command but an opportunity to create real value.`,
-      `Throughout my learning journey, I'm eager to contribute to real-world projects and always seek opportunities to collaborate and gain more experience.`,
-      `If you're interested in my projects or want to connect, feel free to reach out!`,
+      `Hi, I'm **Quan**, a **Fullstack Web Developer** with nearly 2 years of professional experience in building end-to-end applications.`,
+      `My core expertise lies in crafting high-performance user interfaces and architecting robust, scalable backend systems.`,
+      `I bridge the gap between creative design and technical feasibility, focusing on clean code, system optimization, and seamless user experiences.`,
+      `From database design to frontend deployment, I thrive on solving complex technical challenges and delivering real business value through stable and efficient solutions.`,
+      `I'm always open to new technologies and meaningful collaborations. Feel free to reach out if you'd like to discuss tech or potential projects!`,
     ],
-    avatar: "/images/avatar.png",
+    avatar: "/images/avatar.jpg",
     location: "Bac Tu Liem, Ha Noi, Viet Nam.",
     languages: ["English", "Vietnamese"],
     socials: [
@@ -100,25 +99,78 @@ export const projects = {
     "Below are some of the key projects I’ve worked on, where I applied my knowledge, explored new technologies, and tackled real-world programming challenges.",
   items: [
     {
-      title: "September 2024",
+      id: "Quiz-Game",
+      title: "February 2026",
       description: {
-        url: "https://github.com/quanndb/portfolio",
-        name: "Portfolio Website",
-        preview: "/images/prj3-banner.png",
+        url: "https://game.thuanthien.edu.vn",
+        name: "Thuan Thien Adventure Quiz Game",
+        preview: "/images/prj6-1.png",
         content:
-          "A personal portfolio website using NextJS, TailwindCSS, TypeScript and AceternityUI.",
+          "A adventure quiz game with various of playing types. Using NextJS (App Router) & Supabase",
       },
       images: [
-        "/images/prj3-banner.png",
-        "/images/prj3-about.png",
-        "/images/prj3-projects.png",
-        "/images/prj3-contact.png",
+        "/images/prj6-1.png",
+        "/images/prj6-2.png",
+        "/images/prj6-3.png",
+        "/images/prj6-4.png",
       ],
     },
     {
+      id: "thuan-thien-ecosystem-website",
+      title: "September 2025",
+      description: {
+        url: "https://summercamp.thuanthien.edu.vn",
+        name: "Thuan Thien Naturalis's Ecosystem Website",
+        preview: "/images/prj5-2.png",
+        content:
+          "Developed a set of websites for Thuan Thien Naturalis, including summer camp website, bilingual website, and small CRM system. Using NextJS (App Router) & Supabase",
+      },
+      images: [
+        "/images/prj5-1.png",
+        "/images/prj5-2.png",
+        "/images/prj5-3.png",
+        "/images/prj5-4.png",
+      ],
+    },
+    {
+      id: "thuan-thien-website",
+      title: "August 2025",
+      description: {
+        url: "https://thuanthien.edu.vn",
+        name: "Thuan Thien Naturalis's Website",
+        preview: "/images/prj4-1.png",
+        content:
+          "Developed a high-performance, custom-themed WordPress website for Thuan Thien Naturalis, focusing on scalability and user experience.",
+      },
+      images: [
+        "/images/prj4-1.png",
+        "/images/prj4-2.png",
+        "/images/prj4-3.png",
+        "/images/prj4-4.png",
+      ],
+    },
+    {
+      id: "QMS-Module",
+      title: "September 2024",
+      description: {
+        url: "#",
+        name: "QMS Module",
+        preview: "/images/prj3-1.png",
+        content:
+          "Quanlity Management System Module is a module of a larger system that is used to manage the quality of processes or documents in a HRM system. Using Spring Framework & Angular.",
+      },
+      images: [
+        "/images/prj3-1.png",
+        "/images/prj3-2.png",
+        "/images/prj3-3.png",
+        "/images/prj3-4.png",
+      ],
+    },
+    {
+      id: "lowland-coffee",
       title: "March 2024",
       description: {
-        url: "https://github.com/quanndb/LowLand",
+        url: "#",
         name: "Lowland Coffee",
         preview: "/images/prj1-home.png",
         content:
@@ -132,9 +184,10 @@ export const projects = {
       ],
     },
     {
+      id: "cat-gpt",
       title: "February 2023",
       description: {
-        url: "https://github.com/quanndb/CatGPT",
+        url: "https://quanndb.github.io/CatGPT/",
         name: "CatGPT",
         preview: "/images/prj2.png",
         content: "A funny project that was base on ChatGPT, using ReactJS.",
@@ -158,5 +211,5 @@ export const contact = {
 };
 
 export const footer = {
-  copyright: `© 2024 Vu Minh Quan. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} Vu Minh Quan. All rights reserved.`,
 };

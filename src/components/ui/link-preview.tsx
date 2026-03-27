@@ -1,16 +1,16 @@
 "use client";
+import { cn } from "@/lib/utils";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
-import Image from "next/image";
-import { encode } from "qss";
-import React from "react";
 import {
   AnimatePresence,
   motion,
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { encode } from "qss";
+import React from "react";
 
 type LinkPreviewProps = {
   children: React.ReactNode;
@@ -31,7 +31,7 @@ export const LinkPreview = ({
   className,
   width = 200,
   height = 125,
-  quality = 50,
+  quality = 75,
   layout = "fixed",
   isStatic = false,
   imageSrc = "",
@@ -102,6 +102,7 @@ export const LinkPreview = ({
           onMouseMove={handleMouseMove}
           className={cn(className)}
           href={url}
+          target={url === "#" ? "_self" : "_blank"}
         >
           {children}
         </HoverCardPrimitive.Trigger>
@@ -136,6 +137,8 @@ export const LinkPreview = ({
                   href={url}
                   className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
                   style={{ fontSize: 0 }}
+                  // open in new tab
+                  target={url === "#" ? "_self" : "_blank"}
                 >
                   <Image
                     src={isStatic ? imageSrc : src}

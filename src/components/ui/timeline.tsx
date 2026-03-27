@@ -1,7 +1,12 @@
 "use client";
+import { useHasMounted } from "@/hooks/use-has-mounted";
+import { projects } from "@/resource";
+import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { LinkPreview } from "./link-preview";
+
 const Grid = dynamic(() => import("@/components/ui/grid-pattern"), {
   ssr: false,
 });
@@ -10,15 +15,17 @@ type TimelineProps = {
   title: string;
   description: string;
   items: {
+    id: string;
     title: string;
     content: React.ReactNode;
   }[];
 };
 
-export const Timeline = ({ title, description, items }: TimelineProps) => {
+export const Timeline = () => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
+  const hasMounted = useHasMounted();
 
   const updateHeight = () => {
     if (ref.current) {
@@ -34,7 +41,7 @@ export const Timeline = ({ title, description, items }: TimelineProps) => {
     return () => {
       window.removeEventListener("resize", updateHeight);
     };
-  }, [items]);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -50,17 +57,17 @@ export const Timeline = ({ title, description, items }: TimelineProps) => {
       <div className="relative z-10 p-1 bg-gradient-to-l from-zinc-100 to-white dark:to-neutral-900 dark:from-gray-900 rounded-lg text-white">
         <div className="container md:mx-auto overflow-hidden py-20 px-6 md:px-0">
           <h2 className="text-2xl md:text-4xl font-bold mt-2 mb-4 text-black dark:text-white max-w-4xl">
-            {title}
+            {projects.title}
           </h2>
           <p className="text-neutral-700 dark:text-neutral-300 text-md md:text-xl max-w-md">
-            {description}
+            {projects.description}
           </p>
         </div>
 
         <div ref={ref} className="relative max-w-[90rem] mx-auto">
-          {items.map((item, index) => (
+          {projects.items.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className="flex justify-start md:gap-10 mb-20 md:mb-40"
             >
               <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
@@ -73,12 +80,37 @@ export const Timeline = ({ title, description, items }: TimelineProps) => {
               </div>
 
               <div className="relative w-full bg-gradient-to-b dark:from-teal-950 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden shadow-xl">
-                <Grid size={30} />
+                {hasMounted && <Grid size={30} />}
                 <div className="relative pl-20 pr-4 md:pl-4 w-full">
                   <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
                     {item.title}
                   </h3>
-                  {item.content}
+                  <div>
+                    <LinkPreview
+                      isStatic
+                      url={item.description.url}
+                      imageSrc={item.description.preview}
+                      className="font-bold bg-clip-text text-xl text-transparent bg-gradient-to-br from-emerald-500 to-blue-500 dark:from-emerald-300 dark:to-blue-300"
+                    >
+                      {item.description.name}
+                    </LinkPreview>
+                    <p className="text-neutral-800 dark:text-neutral-200 text-md md:text-xl font-normal mb-8 mt-2">
+                      {item.description.content}
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      {item.images.map((image, idx) => (
+                        <Image
+                          key={`${image}-${idx}`}
+                          src={image}
+                          alt={item.title}
+                          width={500}
+                          height={500}
+                          priority
+                          className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

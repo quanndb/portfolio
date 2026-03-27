@@ -11,6 +11,7 @@ import Footer from "@/components/layout/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import SWUnregister from "@/components/utils/sw-unregister";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
               <Footer />
             </HeroHighlight>
             <Toaster />
+            <SWUnregister />
           </ThemeProvider>
         </body>
       </ReactLenis>
