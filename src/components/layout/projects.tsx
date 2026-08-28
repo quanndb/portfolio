@@ -1,5 +1,4 @@
 import { Timeline } from "@/components/ui/timeline";
-import React from "react";
 
 export type TimelineItemType = {
   id: string;

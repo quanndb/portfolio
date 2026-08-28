@@ -6,11 +6,11 @@ import { Inter } from "next/font/google";
 import { ReactLenis } from "@/lib/lenis";
 import { cn } from "@/lib/utils";
 
-import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import { Toaster } from "@/components/ui/toaster";
+import Header from "@/components/layout/header";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import SWUnregister from "@/components/utils/sw-unregister";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,7 +31,7 @@ export default function RootLayout({
         <body className={cn(inter.className)}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >

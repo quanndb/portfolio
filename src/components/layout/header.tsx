@@ -1,8 +1,6 @@
-import React from "react";
-
-import Navbar from "./navbar";
 import Logo from "@/components/layout/logo";
 import ResumeButton from "@/components/ui/resume-button";
+import Navbar from "./navbar";
 
 export default function Header() {
   return (
